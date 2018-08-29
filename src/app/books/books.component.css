@@ -1,0 +1,15 @@
+.h1{
+ text-align: center;
+}
+.book{
+    color: brown;
+    font-size: 150%;
+    cursor: pointer;
+}
+.margin{
+    margin-left: 1%;
+}
+.user{
+    color: blue;
+    font-size: 170%;
+}

@@ -1,0 +1,33 @@
+<!-- <app-navbar></app-navbar> -->
+<app-navbar [book]="selectedBook"></app-navbar>
+<h1 class="h1">List of Books</h1>
+<div class="container">
+  <div class="row">
+    <div *ngIf="user" class="user">
+      <span>Welcome</span><span class="margin">{{user}}</span>
+    </div>
+  
+    <div class="col-lg-6">
+    <ul>
+        <li  *ngFor="let book of BOOKS" (click)="onSelect(book)">
+          <span class="badge">{{book.id}}</span><span class="book">{{book.name}}</span> 
+        </li>      
+      </ul>
+    </div>
+    <div class="col-lg-offset-4 col-lg-2">
+        <app-messages [book]="selectedBook"></app-messages>
+    </div>
+  </div>
+</div>
+  
+      <app-book-detail [book]="selectedBook"></app-book-detail>
+      <button (click)="getDetails()">Get</button>
+
+      <div *ngFor="let item of Items">
+        <p>{{item.id}}</p>
+        <h3>{{item.title}}</h3>
+      </div>
+      
+      
+      <!-- <app-navbar [book]="selectedBook"></app-navbar> -->
+     

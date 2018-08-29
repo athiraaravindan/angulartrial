@@ -1,0 +1,17 @@
+<div class="register-page">
+  <div class="form">
+    <h3>Register</h3>
+    {{message}}
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="name"  formControlName="fname" autocomplete="fname"[ngClass]="{ 'is-invalid': submitted && f.fname.errors }" >
+      <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+        <div *ngIf="f.fname.errors.required"> Name is required</div>
+    </div>
+      <input type="email" placeholder="email" formControlName="email" autocomplete="email"[ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <input type="password" placeholder="password" formControlName="password" autocomplete="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+      <input type="password" placeholder="confirm_password" formControlName="cpassword" autocomplete="cpassword"[ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }" >
+    <button type="submit" class="btn btn-success">Register</button>
+    Already registered.?please.....<a routerLink="../login">Login</a>
+    </form>
+  </div>
+</div>

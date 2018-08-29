@@ -1,0 +1,12 @@
+.user{
+    color: rgb(248, 20, 153);
+}
+.admin{
+    color: blue;
+}
+.act{
+    color: rgb(182, 238, 28);
+}
+.inact{
+    color: red;
+}

@@ -1,0 +1,46 @@
+
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Userlist</h2> 
+    <input type="text" name="searchString" placeholder="Type to search..." [(ngModel)]="term">
+          
+    <table class="table table-bordered"> 
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of Items | filter : term | paginate: { itemsPerPage: 5, currentPage: p }">
+      <!-- <tbody *ngFor="let user of Items | paginate: { itemsPerPage: 5, currentPage: p }"> -->
+        <tr>
+          <td>{{user.fname}}</td>
+          <td>{{user.email}}</td>
+          <td>
+            <span *ngIf="user.role == 1" class="user">user</span>
+            <span *ngIf="user.role == 2" class="admin">admin</span>
+          </td>
+          <td>
+            <span *ngIf="user.status == 1" class="act">Active</span>
+            <span *ngIf="user.status == 0" class="inact">Inactive</span>
+          </td>
+          <td>
+            <img src="http://localhost:3000/uploads/{{user.imagefile}}"height="50" width="50">
+          </td>
+          <td>
+            <button (click)="edit(user)"class="btn btn-info">Edit</button>
+            <button class="btn btn-danger"(click)="delete(user)">Delete</button>
+          </td>
+        </tr>
+     
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+
+ 
