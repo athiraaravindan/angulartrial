@@ -5,6 +5,7 @@ import { AuthGuard } from './auth-guard.service';
 // import { RoleGuard } from './role-guard.service';
 
 import { LoginsService} from './logins.service';
+import { RoleGuard } from './role-guard.service';
 
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
@@ -27,9 +28,10 @@ const routes: Routes = [
   { path: 'register', component:TrialregisterComponent},
   { path : 'login', component:LoginComponent },
   { path : 'registertrial', component:RegisterComponent},
-  { path : 'listuser', component:ListuserComponent, canActivate: [AuthGuard]},
+  { path : 'listuser', component:ListuserComponent, canActivate:[RoleGuard]},
   { path :'edit/:id',component:EditComponent,canActivate: [AuthGuard]},
   { path : 'fileupload',component:FileuploadComponent},
+  { path : 'pagenotfound',component:PageNotFoundComponent,canActivate: [AuthGuard]},
   { path : '**', component:PageNotFoundComponent,canActivate: [AuthGuard]}
 
  

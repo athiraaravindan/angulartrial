@@ -1,16 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './auth-guard.service';
-
-// import { RoleGuard } from './role-guard.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-// import { FilterPipe } from './pipe';
+import { RoleGuard } from './role-guard.service';
 
 
 import { AppComponent } from './app.component';
@@ -60,7 +57,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
   ],
-  providers: [CookieService,AuthGuard],
+  providers: [CookieService,AuthGuard,RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

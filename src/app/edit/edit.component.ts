@@ -56,6 +56,7 @@ export class EditComponent implements OnInit {
     });
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log(item.file.name)
       let pic = JSON.parse(response);
       let imagedata = {id: this.id, picname: pic.picname,imgdelete:this.image,originalname:item.file.name}
          this.http.post('http://localhost:3000/picupload',imagedata)

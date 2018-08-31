@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 // import { AuthGuard } from './auth-guard.service';
-
+import jwt_decode  from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +15,7 @@ export class LoginsService {
   id:any;
   userrole:any;
   role:any;
+  token:any;
 
   constructor( private http: HttpClient ,private router: Router, private cookie:CookieService) { }
 
@@ -28,10 +29,13 @@ export class LoginsService {
 
           let user= JSON.stringify(data);
           localStorage.setItem('loginId', user);
-          
+          // const userrole = JSON.parse(localStorage.getItem("loginId"))
+          // this.token = userrole.token;
+          // this.role = jwt_decode(this.token)
+          // console.log(this.role.role);
          
           //  console.log(this.userrole.role);
-      this.router.navigate(['/books'],{queryParams:{user:data.name}});
+      this.router.navigate(['/dashboard'],{queryParams:{user:data.name}});
         
     }
     else if(data.status == 'password not matching'){
@@ -46,6 +50,7 @@ export class LoginsService {
     
     // console.log(data.status); 
     }) 
+  
     };
     getToken() {
       return localStorage.getItem("loginId")
@@ -58,8 +63,8 @@ export class LoginsService {
     //   return this.userrole;
     //  }
     //  isAdmin(){
-    //    this.userrole = JSON.parse(localStorage.getItem("loginId"))
-    //    this.role = this.userrole.role;
+      //  this.userrole = JSON.parse(localStorage.getItem("loginId"))
+      //  this.role = this.userrole.role;
     //    return this.role ==2;
     //  }
      
